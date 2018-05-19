@@ -14,8 +14,7 @@ class Scraper
       @all.each do |entry|
         course_info["courses"] << entry.css("h2").text
         course_info["schedule"] << entry.css(".date").text
-        course_info["description"] << entry.css("")
-        
+        course_info["description"] << entry.css("p").text
       end
     end
     
