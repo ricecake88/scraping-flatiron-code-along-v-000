@@ -7,16 +7,13 @@ class Scraper
 
     def get_page
       doc = Nokogiri::HTML(open("http://learn-co-curriculum.github.io/site-for-scraping/courses"))
-      binding.pry
-      @all = []
-      @all = doc.css("post")
-      @course_info = [{"title": "", "schedule":"", "description": ""}]
-      @all.each do |entry|
-        @course_info["title"] << entry.css("h2").text
-        @course_info["schedules"] << entry.css(".date").text
-        @course_info["descriptions"] << entry.css("p").text
+      doc.css(".post")each do |post|
+        course = Course.new
+        course.title << entry.css("h2").text
+        course.schedule << entry.css(".date").text
+        course.description << entry.css("p").text
       end
-      @course_info.each do |
+      binding.pry
     end
     
     def get_courses
