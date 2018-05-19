@@ -10,12 +10,13 @@ class Scraper
       binding.pry
       @all = []
       @all = doc.css("post")
-      course_info = ["courses":[], "schedule":[], "description":[]]
+      @course_info = [{"title": "", "schedule":"", "description": ""}]
       @all.each do |entry|
-        course_info["courses"] << entry.css("h2").text
-        course_info["schedule"] << entry.css(".date").text
-        course_info["description"] << entry.css("p").text
+        @course_info["title"] << entry.css("h2").text
+        @course_info["schedules"] << entry.css(".date").text
+        @course_info["descriptions"] << entry.css("p").text
       end
+      @course_info.each do |
     end
     
     def get_courses
